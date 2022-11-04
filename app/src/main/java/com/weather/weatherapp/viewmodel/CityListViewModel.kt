@@ -1,9 +1,11 @@
 package com.weather.weatherapp.viewmodel
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.weather.weatherapp.domain.usecase.GetNearbyCitiesUseCase
 import com.weather.weatherapp.model.response.NearbyCityResponse
 import com.weather.weatherapp.repository.WeatherRepository
 import com.weather.weatherapp.util.Resource
@@ -12,19 +14,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CityListViewModel @Inject constructor(private val repository: WeatherRepository)  : ViewModel() {
+class CityListViewModel @Inject constructor(
+    private val getNearbyCitiesUseCase: GetNearbyCitiesUseCase
+)  : ViewModel() {
 
-    val nearbyCityList = MutableLiveData<NearbyCityResponse?>()
+    private val _nearbyCityListLiveData: MutableLiveData<NearbyCityResponse?> = MutableLiveData()
+    val nearbyCityListLiveData: LiveData<NearbyCityResponse?> get() = _nearbyCityListLiveData
+
     var errorMessage = mutableStateOf("")
     var isLoading = mutableStateOf(false)
 
     fun nearbyCity(url: String){
         viewModelScope.launch {
             isLoading.value = true
-            val result = repository.getNearbyCities(url)
+            val result = getNearbyCitiesUseCase.nearbyCities(url)
             when(result){
                 is Resource.Success -> {
-                    nearbyCityList.value = result.data
+                    _nearbyCityListLiveData.value = result.data
                     errorMessage.value = ""
                     isLoading.value = false
                 }

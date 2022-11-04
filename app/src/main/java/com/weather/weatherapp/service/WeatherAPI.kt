@@ -16,7 +16,6 @@ interface WeatherAPI {
     @GET
     suspend fun getNearbySearch(@Url placeUrl: String) : NearbyCityResponse
 
-
     @GET(WEATHER_URL)
     suspend fun getWeather(@Query("lat") lat: Double, @Query("lon") lon: Double, @Query("appid") appid: String = Constant.API_KEY) : WeatherResponse
 

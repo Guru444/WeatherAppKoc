@@ -8,11 +8,14 @@ import android.location.Geocoder
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.widget.ImageView
 import androidx.core.app.ActivityCompat
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.weather.weatherapp.model.request.NearbyRequestModel
 import com.weather.weatherapp.model.response.AdressInfoCard
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 fun urlGenarete(nearbyRequestModel: NearbyRequestModel) : String {
@@ -64,4 +67,24 @@ fun isNetworkAvailable(context: Context): Boolean {
         val nwInfo = connectivityManager.activeNetworkInfo ?: return false
         return nwInfo.isConnected
     }
+}
+
+fun ImageView.showImage(imgIcon: String?){
+    Glide.with(this.context)
+        .load("http://openweathermap.org/img/wn/${imgIcon}@2x.png")
+        .into(this)
+}
+
+fun returnDayList() : ArrayList<String>{
+    val days: ArrayList<String> = arrayListOf()
+    with(days){
+        add("Sun")
+        add("Mon")
+        add("Tues")
+        add("Wednes")
+        add("Thurs")
+        add("Fri")
+        add("Satur")
+    }
+    return days
 }

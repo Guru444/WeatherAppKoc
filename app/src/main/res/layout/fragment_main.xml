@@ -29,7 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Location Name:"
+        tools:text="Location Name:"
+        android:textColor="@color/purple_500"
         android:layout_margin="12dp"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/tv_postalcode"/>
@@ -39,8 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Lat, Long :"
+        tools:text="Lat, Long :"
         android:layout_margin="12dp"
+        android:textColor="@color/purple_500"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/tv_locationName"/>
 
@@ -49,8 +51,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Network Status:"
+        tools:text="Network Status:"
         android:layout_margin="12dp"
+        android:textColor="@color/purple_500"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/tv_lat_long"/>
 
@@ -60,7 +63,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Posta Kodu :"
+        tools:text="Posta Kodu :"
+        android:textColor="@color/purple_500"
         android:layout_margin="12dp"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/tlb_nearby"/>

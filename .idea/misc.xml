@@ -10,6 +10,10 @@
         <entry key="app/src/main/res/layout/fragment_city_weather_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.19010416666666666" />
         <entry key="app/src/main/res/layout/nearby_list_item_layout.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/weather_current_layout.xml" value="0.2078804347826087" />
+        <entry key="app/src/main/res/layout/weather_daily_item_layout.xml" value="0.2078804347826087" />
+        <entry key="app/src/main/res/layout/weather_daily_layout.xml" value="0.2078804347826087" />
+        <entry key="app/src/main/res/layout/weather_hourly_layout.xml" value="0.2078804347826087" />
         <entry key="app/src/main/res/layout/weather_item_layout.xml" value="0.2078804347826087" />
         <entry key="app/src/main/res/menu/bottom_nav_menu_item.xml" value="0.196875" />
       </map>

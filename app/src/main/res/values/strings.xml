@@ -8,4 +8,6 @@
     <string name="channel_name">Weather Channel</string>
     <string name="channel_description">WeatherChannel</string>
 
+    <string name="weather_time">%1sPM</string>
+    <string name="weather_degree">%1s°</string>
 </resources>

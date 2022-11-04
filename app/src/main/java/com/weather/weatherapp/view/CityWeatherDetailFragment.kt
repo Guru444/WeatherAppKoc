@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ConcatAdapter
+import com.weather.weatherapp.adapter.WeatherAdapter
 import com.weather.weatherapp.adapter.WeatherListAdapter
 import com.weather.weatherapp.databinding.FragmentCityWeatherDetailBinding
+import com.weather.weatherapp.model.MainContentData
+import com.weather.weatherapp.model.response.WeatherResponse
 import com.weather.weatherapp.util.Constant
 import com.weather.weatherapp.viewmodel.CityWeatherDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,8 +26,8 @@ class CityWeatherDetailFragment : Fragment() {
     private var lat: Double? = null
     private var lon: Double? = null
 
-    @Inject
-    lateinit var weatherListAdapter: WeatherListAdapter
+    private var weatherAdapter = WeatherAdapter()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,14 +50,13 @@ class CityWeatherDetailFragment : Fragment() {
                 }
             }
 
-            rvWeatherList.adapter = weatherListAdapter
+            rvWeather.adapter = weatherAdapter
 
             cityWeatherDetailViewModel.weatherResponseLiveData.observe(viewLifecycleOwner){
-                it?.let {
-                    tvLocationName.text = it.city?.name
-                    tvDeegree.text = it.list?.getOrNull(0)?.wind?.deg.toString()
-                    tvWeatherDesc.text = it.list?.getOrNull(0)?.weather?.getOrNull(0)?.description
-                    weatherListAdapter.submitList(it.list)
+                it?.let { weather->
+                    weatherAdapter.setWeatherCurrentItem(MainContentData(WeatherAdapter.WEATHER_CURRENT, mapOf(Constant.WEATHER_CURRENT to weather)))
+                    weatherAdapter.setHourlyItem(MainContentData(WeatherAdapter.WEATHER_HOURLY, mapOf(Constant.WEATHER_HOURLY to weather)))
+                    weatherAdapter.setDailyItem(MainContentData(WeatherAdapter.WEATHER_DAYS, mapOf(Constant.WEATHER_DAILY to weather)))
                 }
             }
         }

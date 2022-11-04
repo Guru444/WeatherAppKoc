@@ -42,7 +42,7 @@ class CityFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCityBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -71,7 +71,7 @@ class CityFragment : Fragment() {
                },{}
             )
 
-            cityListViewModel.nearbyCityList.observe(viewLifecycleOwner){
+            cityListViewModel.nearbyCityListLiveData.observe(viewLifecycleOwner){
                 it?.let {
                     nearbyCityAdapter.submitList(it.postalCodes)
                 }
