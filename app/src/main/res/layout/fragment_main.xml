@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.MainFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tlb_nearby"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Nearby Info Main-Page"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#000000"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tlb_nearby"/>
+
+    <TextView
+        android:id="@+id/tv_locationName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Location Name:"
+        android:layout_margin="12dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_postalcode"/>
+
+    <TextView
+        android:id="@+id/tv_lat_long"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Lat, Long :"
+        android:layout_margin="12dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_locationName"/>
+
+    <TextView
+        android:id="@+id/tv_network_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Network Status:"
+        android:layout_margin="12dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_lat_long"/>
+
+
+    <TextView
+        android:id="@+id/tv_postalcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Posta Kodu :"
+        android:layout_margin="12dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tlb_nearby"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

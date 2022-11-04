@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="postal_code">Postal Code : %1s</string>
+    <string name="location_name">Location Name :  %1s</string>
+    <string name="lat_long">Lat-Long :  %1s</string>
+    <string name="network_state">Network State :  %1s</string>
+    <string name="channel_id">general</string>
+    <string name="channel_name">Weather Channel</string>
+    <string name="channel_description">WeatherChannel</string>
+
+</resources>

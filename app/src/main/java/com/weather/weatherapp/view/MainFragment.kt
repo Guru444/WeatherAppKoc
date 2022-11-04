@@ -1,0 +1,57 @@
+package com.weather.weatherapp.view
+
+import android.content.Context
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.weather.weatherapp.R
+import com.weather.weatherapp.databinding.FragmentMainBinding
+import com.weather.weatherapp.util.NetworkMonitoringUtil
+import com.weather.weatherapp.util.getLocationCity
+import com.weather.weatherapp.util.isNetworkAvailable
+import com.weather.weatherapp.viewmodel.MainVieModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+
+@AndroidEntryPoint
+class MainFragment : Fragment() {
+
+    private lateinit var binding: FragmentMainBinding
+
+    @Inject
+    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentMainBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        binding.apply {
+            requireActivity().getLocationCity(fusedLocationProviderClient, {}, {
+                it.let {
+                    tvLocationName.text = getString(R.string.location_name, it.locationName)
+                    tvPostalcode.text = getString(R.string.postal_code, it.postalCode)
+                    tvLatLong.text = getString(R.string.lat_long, it.latLong)
+                    tvNetworkStatus.text = getString(R.string.network_state, isNetworkAvailable(requireContext()).toString())
+                }
+            })
+        }
+    }
+}
