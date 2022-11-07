@@ -1,5 +1,11 @@
 # <h1> WeatherApp </h1>
 
-<title> Service </title>
-https://www.geonames.org/
-https://openweathermap.org/api
+</br>
+
+<h2> Service </h2>
+<ul>
+  <li>https://www.geonames.org/</li>
+  <li>https://openweathermap.org/api</li>
+</ul>
+
+
